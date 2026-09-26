@@ -105,11 +105,11 @@
 // Paste your CURRENT credentials here.
 // Do not post them publicly.
 
-#define BOT_TOKEN "8887609254:AAFCdKgLyfzDTxKQfbY6w0zflqF1TZJsuk8"
-#define CHAT_ID   "6586045539"
+#define BOT_TOKEN "I AM SORRY BECUASE I CAN'T DO THIIS "
+#define CHAT_ID   "SORRY I CAN'T DO THIS "
 
 const char* WIFI_SSID     = "HARSH__&___Kishori";
-const char* WIFI_PASSWORD = "98795@Chandresh89095";
+const char* WIFI_PASSWORD = "123456789";
 
 
 // ============================================================================
