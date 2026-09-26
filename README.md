@@ -1,693 +1,642 @@
-<p align="center">
+<div align="center">
 
 # 🛡️ SheShield
 
 ### **When she cannot reach her phone, SheShield acts.**
 
-**A multimodal wearable safety prototype that detects distress through ❤️ heart rate, 🎙️ sound, 📳 motion and 💥 impact — then provides a human-cancellable path to 🚨 SOS with 📍 location.**
+<p>
+<b>Multimodal • Explainable • Human-Cancellable • Location-Aware</b>
+</p>
+
+<p>
+❤️ Heart Rate &nbsp; • &nbsp;
+🎙️ Sound &nbsp; • &nbsp;
+📳 Motion &nbsp; • &nbsp;
+💥 Impact &nbsp; • &nbsp;
+📍 GPS &nbsp; • &nbsp;
+🚨 SOS
+</p>
 
 <br>
 
-<img src="https://img.shields.io/badge/ESP32-IoT-blue?style=for-the-badge&logo=espressif">
-<img src="https://img.shields.io/badge/Arduino-Firmware-00979D?style=for-the-badge&logo=arduino">
-<img src="https://img.shields.io/badge/IEEE-WIE%20ILS%202026-purple?style=for-the-badge">
-<img src="https://img.shields.io/badge/Track-3%20%7C%20SheLeads-orange?style=for-the-badge">
-<img src="https://img.shields.io/badge/Problem-P6-red?style=for-the-badge">
-<img src="https://img.shields.io/badge/Prototype-Working-success?style=for-the-badge">
+<img src="https://img.shields.io/badge/ESP32-IoT-0078D4?style=for-the-badge&logo=espressif&logoColor=white">
+<img src="https://img.shields.io/badge/Arduino-Firmware-00979D?style=for-the-badge&logo=arduino&logoColor=white">
+<img src="https://img.shields.io/badge/IEEE-WIE%20ILS-2026-6A1B9A?style=for-the-badge">
+<img src="https://img.shields.io/badge/Track-SheLeads-E67E22?style=for-the-badge">
+<img src="https://img.shields.io/badge/Problem-P6-C0392B?style=for-the-badge">
+<img src="https://img.shields.io/badge/Prototype-WORKING-2ECC71?style=for-the-badge">
 
 <br><br>
 
-### ❤️ 🎙️ 📳 💥 📍 📺 📲 🚨
+<a href="#-live-prototype">
+<img src="https://img.shields.io/badge/🚀_LIVE_PROTOTYPE-2ECC71?style=for-the-badge">
+</a>
+&nbsp;
+<a href="#-how-it-works">
+<img src="https://img.shields.io/badge/🧠_HOW_IT_WORKS-3498DB?style=for-the-badge">
+</a>
+&nbsp;
+<a href="#-demo">
+<img src="https://img.shields.io/badge/🎥_DEMO-E74C3C?style=for-the-badge">
+</a>
 
-**Sense → Understand → Warn → Cancel → Respond**
-
-</p>
+</div>
 
 ---
 
-# 🏆 IEEE WIE ILS 2026
+<div align="center">
 
-### **National Hackathon**
+## 🏆 IEEE WIE ILS 2026
 
-**Track 3 — SheLeads (WIE Special Track)**
-**Problem Statement P6 — SheShield Wearable**
+### **Track 3 — SheLeads**
+
+### **Problem Statement P6 — SheShield Wearable**
+
+</div>
+
+---
+
+# 📸 Meet SheShield
+
+<div align="center">
+
+<!-- REPLACE WITH YOUR BEST PROTOTYPE PHOTO -->
+
+<img src="./assets/images/sheshield-prototype.jpg" width="850">
+
+### 🛡️ **A working multimodal safety prototype**
+
+</div>
+
+> **The idea is simple:**
+> If the wearer cannot reach the phone, the wearable should still be able to recognize a possible distress pattern and begin an emergency-response process.
 
 ---
 
 # 🚨 The Problem
 
-Most safety applications and devices assume one critical thing:
-
-> **The user can act.**
-
-The conventional emergency flow is:
+Traditional emergency systems often assume:
 
 ```text
-📱 Take Phone
+📱 Reach Phone
       ↓
 🔓 Unlock
       ↓
-📲 Open Application
+📲 Open App
       ↓
 🔘 Press SOS
       ↓
-🚨 Emergency Alert
+🚨 Help
 ```
 
-But during a real emergency, that interaction may not be possible.
+But during a real emergency, **the first step itself may be impossible.**
 
-The person may be:
+The user may be:
 
 * 🤕 Physically restrained
 * 📱 Unable to reach the phone
 * 😨 Under extreme stress
-* 🚫 Unable to perform precise actions
-* ⚠️ In a situation where taking out a phone may not be practical
+* 🚫 Unable to perform precise interactions
+* ⚠️ In a situation where using a phone is not practical
 
-### **SheShield explores the gap between distress beginning and the user being able to manually ask for help.**
+### 💡 SheShield targets this interaction gap.
 
 ---
 
-# 💡 Our Solution
+# 🛡️ Our Core Idea
 
-SheShield is an **ESP32-based multimodal wearable prototype** that continuously observes multiple physical signals and converts them into an **explainable distress score**.
+<div align="center">
 
-Instead of depending on one button:
+### **Don't wait for the button.**
+
+### **Observe the situation.**
+
+<br>
+
+❤️ + 🎙️ + 📳 + 💥 <br>
+⬇️ <br>
+🧠 **DISTRESS ANALYSIS** <br>
+⬇️ <br>
+🎯 **EXPLAINABLE SCORE** <br>
+⬇️ <br>
+⏳ **8-SECOND SAFETY WINDOW** <br>
+⬇️ <br>
+🚨 **SOS** <br>
+⬇️ <br>
+📲 **TELEGRAM** + 📍 **GPS**
+
+</div>
+
+---
+
+# 🧠 How It Works
+
+<div align="center">
+
+<img src="./assets/diagrams/system-architecture.png" width="900">
+
+</div>
+
+### 🔄 Detection Pipeline
 
 ```text
-❤️ Heart Rate
-      +
-🎙️ Sound
-      +
-📳 Motion
-      +
-💥 Impact
-      ↓
-🧠 DISTRESS ANALYSIS
-      ↓
-🎯 DISTRESS SCORE
-      ↓
-⏳ 8-SECOND SAFETY WINDOW
-      ↓
-      ├── 🛑 CANCEL
-      │
-      └── 🚨 SOS
-             ↓
-       📲 Telegram
-             +
-       📍 GPS Location
-```
-
-## 🛡️ Design Philosophy
-
-> **The system should be able to detect a possible emergency without requiring the wearer to manually initiate the first alert.**
-
----
-
-# ⚡ At a Glance
-
-| Capability                     | SheShield |
-| ------------------------------ | :-------: |
-| ❤️ Heart-rate monitoring       |     ✅     |
-| 🎙️ Sound-event detection      |     ✅     |
-| 📳 Motion detection            |     ✅     |
-| 💥 Impact detection            |     ✅     |
-| 🧠 Explainable distress score  |     ✅     |
-| 👤 Personal HR baseline        |     ✅     |
-| ⏳ 8-second cancellation window |     ✅     |
-| 🔘 Manual SOS                  |     ✅     |
-| 📍 GPS location                |     ✅     |
-| 📺 OLED interface              |     ✅     |
-| 📲 Telegram SOS                |     ✅     |
-| 🤖 Telegram command center     |     ✅     |
-| 🟢🔴 Local status indicators   |     ✅     |
-| 🔊 Emergency buzzer            |     ✅     |
-| 📡 Wi-Fi communication         |     ✅     |
-
----
-
-# 🧠 Multimodal Detection Engine
-
-SheShield does not depend on a single sensor.
-
-It combines multiple signals into a single decision layer.
-
-| Signal              | Hardware         | What it contributes             |
-| ------------------- | ---------------- | ------------------------------- |
-| ❤️ **Heart Rate**   | MAX30102         | Personal baseline + HR rise     |
-| 🎙️ **Sound**       | Sound Sensor     | Separate sound / voice events   |
-| 📳 **Motion**       | MPU6050          | Sustained movement              |
-| 💥 **Impact**       | MPU6050          | Sudden impact / fall-like event |
-| 📍 **Location**     | NEO-6M           | Emergency coordinates           |
-| 📺 **Feedback**     | 1.3" SH1106 OLED | Live system information         |
-| 🚨 **Local Alert**  | Buzzer + LEDs    | Immediate on-device indication  |
-| 📲 **Remote Alert** | Wi-Fi + Telegram | Emergency escalation            |
-
----
-
-# 🎯 The Core Innovation
-
-## **Multimodal + Explainable + Human-Cancellable**
-
-### 1️⃣ Multimodal
-
-Different physical signals contribute to the same emergency decision.
-
-### 2️⃣ Explainable
-
-The system produces a **0–100 distress score** instead of hiding the decision inside an unexplained black box.
-
-### 3️⃣ Human-Cancellable
-
-Before automatic escalation, the user receives an **8-second cancellation window**.
-
-This creates:
-
-```text
-         🧠 DETECTION
-              ↓
-        🎯 SCORE
-              ↓
-       ⚠️ POSSIBLE DISTRESS
-              ↓
-       ⏳ 8 SECOND WINDOW
-          ↙         ↘
-     🛑 CANCEL      🚨 SOS
+       ❤️ HEART RATE
+              │
+              │
+       🎙️ SOUND EVENTS
+              │
+              │
+       📳 MOTION / IMPACT
+              │
+              ▼
+    ┌─────────────────────┐
+    │   🧠 SENSOR FUSION  │
+    └──────────┬──────────┘
+               │
+               ▼
+    ┌─────────────────────┐
+    │ 🎯 DISTRESS SCORE   │
+    │       0 — 100       │
+    └──────────┬──────────┘
+               │
+          SCORE ≥ 55
+               │
+               ▼
+    ┌─────────────────────┐
+    │   ⏳ 8 SEC WINDOW    │
+    │                     │
+    │  🛑 CANCEL   🚨 SOS │
+    └──────────┬──────────┘
+               │
+          NOT CANCELLED
+               │
+               ▼
+       ┌───────────────┐
+       │  🚨 SOS ACTIVE│
+       └───────┬───────┘
+               │
+       ┌───────┴────────┐
+       ▼                ▼
+   📲 TELEGRAM       📍 GPS
 ```
 
 ---
 
-# 🧮 Explainable Distress Score
+# ⭐ What Makes SheShield Different?
 
-The current prototype firmware uses the following scoring logic:
+<div align="center">
 
-| Detected condition                 | Contribution |
-| ---------------------------------- | -----------: |
-| ❤️ HR rise ≥ +15 BPM               |      **+30** |
-| ❤️ HR rise ≥ +25 BPM               |      **+60** |
-| 🎙️ 1 sound event                  |      **+20** |
-| 🎙️ 2 sound events                 |      **+40** |
-| 🎙️ 3 sound events                 |      **+60** |
-| 📳 Sustained motion                |      **+15** |
-| 💥 Sudden impact / fall-like event |      **+30** |
+|         🧩 Feature        | 🛡️ SheShield |
+| :-----------------------: | :-----------: |
+|   ❤️ Heart-rate context   |       ✅       |
+| 🎙️ Sound-event detection |       ✅       |
+|     📳 Motion analysis    |       ✅       |
+|    💥 Impact detection    |       ✅       |
+|    🧠 Explainable score   |       ✅       |
+|  👤 Personal HR baseline  |       ✅       |
+|    ⏳ Human cancellation   |       ✅       |
+|       🔘 Manual SOS       |       ✅       |
+|      📍 GPS location      |       ✅       |
+|  📲 Remote Telegram alert |       ✅       |
+|      📺 OLED feedback     |       ✅       |
+|  🔊 Local emergency alert |       ✅       |
 
-### 🎯 Automatic escalation threshold
+</div>
+
+---
+
+# 🧮 Explainable Distress Engine
+
+Instead of an unexplained **AI = YES/NO**, the prototype exposes a visible score.
+
+### 🎯 Current Prototype Parameters
+
+| Signal               | Contribution |
+| :------------------- | -----------: |
+| ❤️ HR rise ≥ +15 BPM |      **+30** |
+| ❤️ HR rise ≥ +25 BPM |      **+60** |
+| 🎙️ 1 sound event    |      **+20** |
+| 🎙️ 2 sound events   |      **+40** |
+| 🎙️ 3 sound events   |      **+60** |
+| 📳 Sustained motion  |      **+15** |
+| 💥 Sudden impact     |      **+30** |
+
+### 🚨 Trigger Threshold
+
+<div align="center">
 
 # **55 / 100**
 
-The score makes the system's decision easier to inspect, debug and demonstrate.
+`███████████░░░░░░░░░`
 
-> ⚠️ These are **prototype parameters**, not clinically validated thresholds.
+### 🎯 DISTRESS THRESHOLD
 
----
+</div>
 
-# 🎙️ Soft-Voice Detection
-
-One of the prototype's key demonstration goals is detecting **quieter voice/sound events** instead of requiring an extremely loud shout.
-
-The current firmware treats separate sound bursts as events.
-
-### Example demonstration
-
-```text
-🎙️ "bachaao"
-      ↓
-🟡 EVENT 1
-
-🎙️ "bachaao"
-      ↓
-🟡 EVENT 2
-
-🎙️ "bachaao"
-      ↓
-🔴 EVENT 3
-
-      ↓
-
-🚨 DISTRESS PATTERN
-      ↓
-⏳ 8-SECOND COUNTDOWN
-```
-
-### Important technical clarification
-
-The prototype detects **sound intensity/events**.
-
-It does **not** perform speech recognition and does not identify the actual word `"bachaao"`.
-
----
-
-# ❤️ Personal Heart-Rate Baseline
-
-Instead of depending only on one universal BPM number, SheShield uses a **personal baseline concept**.
-
-```text
-❤️ Initial HR
-      ↓
-📊 Baseline
-      ↓
-❤️ Current HR
-      ↓
-📈 HR Rise
-      ↓
-🧠 Score Contribution
-```
-
-This allows the prototype to reason about **change relative to the wearer** rather than treating every person's heart rate as identical.
-
----
-
-# 📳 Motion + 💥 Impact Detection
-
-The MPU6050 provides two complementary signals.
-
-### 📳 Sustained Motion
-
-Used for detecting significant movement while reducing sensitivity to small fluctuations.
-
-### 💥 Sudden Impact
-
-Used for fast transient events such as:
-
-* Strong movement
-* Sudden impact
-* Fall-like acceleration
-
-```text
-📳 MOTION
-    +
-💥 IMPACT
-    ↓
-🧠 DISTRESS CONTRIBUTION
-```
+> These values are prototype parameters and require further calibration and validation.
 
 ---
 
 # 🛡️ False-Alarm Protection by Design
 
-A safety device must balance **sensitivity** with **controlled escalation**.
+SheShield is designed with multiple safety layers.
 
-SheShield therefore uses multiple layers:
+### 1️⃣ Multimodal Context
 
-### 🔹 Layer 1 — Multimodal Signals
+Multiple signals contribute to the decision.
 
-No single sensor is intended to represent the complete context.
+### 2️⃣ Explainable Scoring
 
-### 🔹 Layer 2 — Explainable Scoring
+Every contribution can be inspected.
 
-Signals contribute to a visible score.
+### 3️⃣ Human Cancellation
 
-### 🔹 Layer 3 — Cancellation Window
+The system provides an **8-second cancellation window**.
 
-A possible emergency enters an **8-second human-in-the-loop window** before automatic escalation.
+### 4️⃣ Manual Override
 
-### 🔹 Layer 4 — Manual Override
-
-The wearer can manually initiate emergency handling through the button.
+The wearer can manually initiate SOS.
 
 ---
 
-## 🚦 Emergency Decision Flow
+## ⏳ Human-in-the-Loop Safety Layer
+
+<div align="center">
 
 ```text
-          🚨 POSSIBLE DISTRESS
-                   │
-                   ▼
-             🎯 SCORE CHECK
-                   │
-            Score ≥ 55?
-              /       \
-            NO         YES
-            │           │
-            ▼           ▼
-       🟢 MONITOR   ⏳ COUNTDOWN
-                         │
-                  ┌──────┴──────┐
-                  │             │
-               🛑 CANCEL      NO CANCEL
-                  │             │
-                  ▼             ▼
-             🟢 RETURN       🚨 SOS
+             🚨 POSSIBLE DISTRESS
+                      │
+                      ▼
+                 🎯 SCORE ≥ 55
+                      │
+                      ▼
+               ⏳ 8 SECOND WINDOW
+                      │
+             ┌────────┴────────┐
+             │                 │
+        🔘 CANCEL          NO ACTION
+             │                 │
+             ▼                 ▼
+       🟢 CANCELLED        🚨 SOS
                               │
-                    ┌─────────┴─────────┐
-                    ▼                   ▼
-                 📲 Telegram          📍 GPS
+                      ┌───────┴───────┐
+                      ▼               ▼
+                  📲 TELEGRAM       📍 GPS
 ```
+
+</div>
 
 ---
 
-# ⏳ 8-Second Human Safety Window
+# 🎙️ Soft-Voice Demonstration
 
-Automatic escalation is preceded by an **8-second countdown**.
+### **Designed for quieter voice/sound events**
+
+<div align="center">
 
 ```text
-🚨 DISTRESS DETECTED
+🎙️ EVENT 1
+      ↓
+🎙️ EVENT 2
+      ↓
+🎙️ EVENT 3
+      ↓
+🎯 DISTRESS PATTERN
+      ↓
+⏳ COUNTDOWN
+      ↓
+🚨 SOS
+```
 
-⏳ 8
-⏳ 7
-⏳ 6
-⏳ 5
-⏳ 4
-⏳ 3
-⏳ 2
-⏳ 1
+</div>
 
+### ⚠️ Technical Honesty
+
+The current prototype detects **sound intensity/events**.
+
+It does **not** perform speech recognition or identify the word `"bachaao"`.
+
+---
+
+# ❤️ Personal Heart-Rate Baseline
+
+<div align="center">
+
+```text
+       ❤️ INITIAL READINGS
+              ↓
+       📊 PERSONAL BASELINE
+              ↓
+       ❤️ CURRENT BPM
+              ↓
+          📈 HR RISE
+              ↓
+       🎯 SCORE CONTRIBUTION
+```
+
+</div>
+
+The system therefore considers the **change relative to the baseline**, rather than relying only on one universal BPM value.
+
+---
+
+# 📳 Motion + 💥 Impact
+
+The MPU6050 provides complementary movement information.
+
+```text
+📳 SUSTAINED MOTION
+          +
+💥 SUDDEN IMPACT
           ↓
-
-       🚨 SOS
+🧠 DISTRESS CONTRIBUTION
 ```
 
-### 🛑 Short button press
-
-Cancels the pending alert.
-
-### 🚨 No cancellation
-
-SOS becomes active.
+This enables the prototype to demonstrate different physical distress scenarios.
 
 ---
 
-# 🔘 Physical Control System
+# 🚨 SOS State Machine
 
-| User Action                     | System Behaviour |
-| ------------------------------- | ---------------- |
-| 🔘 Quick press while OFF        | 🟢 System ON     |
-| 🔘 Quick press while monitoring | 🔴 System OFF    |
-| 🔘 Quick press during countdown | 🛑 Cancel        |
-| 🔘 Quick press during SOS       | 🔄 Reset         |
-| 🔘 Hold for 8 seconds           | 🆘 Manual SOS    |
-| 📳 Motion gesture while OFF     | 🟢 Arm prototype |
-
-The button therefore acts as both a **control interface** and an **emergency override**.
-
----
-
-# 🆘 Manual SOS
-
-Automatic detection is not the only path.
-
-The wearer can also initiate a manual emergency sequence.
+<div align="center">
 
 ```text
-🔘 HOLD BUTTON
-      ↓
-⏱️ 8 SECONDS
-      ↓
-🆘 MANUAL SOS
-      ↓
-📲 TELEGRAM
-      +
-📍 GPS
+       🔴 SYSTEM OFF
+              │
+              │ 🔘 / Motion
+              ▼
+      🟢 MONITORING
+              │
+              │ 🎯 Threshold
+              ▼
+       🟡 COUNTDOWN
+              │
+       ┌──────┴──────┐
+       │             │
+   🔘 CANCEL      ⏳ TIMEOUT
+       │             │
+       ▼             ▼
+    🟢 RESET      🚨 SOS ACTIVE
+                     │
+             ┌───────┴───────┐
+             ▼               ▼
+         📲 TELEGRAM       📍 GPS
 ```
 
-This provides a direct fallback when the user is able to manually activate the system.
+</div>
 
 ---
 
-# 📲 Telegram Emergency Command Center
+# 🔘 Physical Controls
 
-SheShield integrates a Telegram-based remote monitoring layer.
-
-### Available commands
-
-| Command     | Function                      |
-| ----------- | ----------------------------- |
-| `/start`    | 🛡️ Initialize command center |
-| `/help`     | 📖 Show commands              |
-| `/status`   | 📊 Live system status         |
-| `/location` | 📍 Current GPS location       |
-| `/test`     | 🧪 Communication test         |
-| `/reset`    | 🔄 Reset emergency state      |
-| `/sos`      | 🆘 Manual SOS                 |
-| `/on`       | 🟢 Arm system                 |
-| `/off`      | 🔴 Disarm system              |
+| User Action                 | Result        |
+| --------------------------- | ------------- |
+| 🔘 Quick press — OFF        | 🟢 Turn ON    |
+| 🔘 Quick press — Monitoring | 🔴 Turn OFF   |
+| 🔘 Quick press — Countdown  | 🛑 Cancel     |
+| 🔘 Quick press — SOS        | 🔄 Reset      |
+| 🔘 Hold 8 seconds           | 🆘 Manual SOS |
+| 📳 Motion gesture — OFF     | 🟢 Arm        |
 
 ---
 
-# 📍 Emergency Location Intelligence
+# 📲 Telegram Command Center
 
-When GPS has a valid fix, the SOS message can include:
+<div align="center">
 
-* 📍 Latitude
-* 📍 Longitude
-* 🛰️ Satellite count
-* 📡 HDOP
-* 🗺️ Google Maps link
-* 📌 Telegram location pin
+### **Your emergency control room**
 
-### Emergency communication flow
+</div>
+
+|   Command   | Function              |
+| :---------: | --------------------- |
+|   `/start`  | 🛡️ Initialize        |
+|   `/help`   | 📖 Commands           |
+|  `/status`  | 📊 Live status        |
+| `/location` | 📍 GPS location       |
+|   `/test`   | 🧪 Communication test |
+|   `/reset`  | 🔄 Reset              |
+|    `/sos`   | 🆘 Manual SOS         |
+|    `/on`    | 🟢 Arm                |
+|    `/off`   | 🔴 Disarm             |
+
+---
+
+# 📍 Emergency Location
+
+When a valid GPS fix is available:
 
 ```text
 🚨 SOS ACTIVE
-      ↓
-📲 Telegram Alert
-      ↓
-📍 GPS Coordinates
-      ↓
+
+❤️ Heart Rate
+🎙️ Sound Events
+📳 Motion
+🎯 Distress Score
+
+📍 Latitude
+📍 Longitude
+🛰️ Satellites
+📡 HDOP
+
 🗺️ Google Maps
-      ↓
-👤 Remote recipient can identify location
+📌 Telegram Location
 ```
 
 ---
 
-# 📺 OLED Dashboard
+# 📺 Live OLED Dashboard
 
-The 1.3" SH1106 OLED provides real-time local feedback.
+<div align="center">
 
-### Display information includes:
+<!-- ADD OLED PHOTO -->
 
-🛡️ System State
-❤️ Heart Rate
+<img src="./assets/images/oled-dashboard.jpg" width="600">
+
+### **Live system visibility**
+
+</div>
+
+The OLED provides local feedback for:
+
+❤️ BPM
 🎙️ Sound Events
 🎯 Distress Score
 📳 Motion
-💥 Impact
 📍 GPS
 ⏳ Countdown
 🚨 SOS State
 
-The display allows judges to see the prototype's internal state during live demonstration.
+---
+
+# 📸 Hardware Prototype
+
+<div align="center">
+
+<!-- ADD 2–4 REAL PHOTOS -->
+
+<img src="./assets/images/prototype-front.jpg" width="400">
+<img src="./assets/images/prototype-side.jpg" width="400">
+
+<br><br>
+
+<img src="./assets/images/prototype-wiring.jpg" width="800">
+
+### 🔧 Working Breadboard Prototype
+
+</div>
 
 ---
 
-# 🔊 Local Emergency Feedback
+# 🔌 Hardware Architecture
 
-SheShield also provides immediate physical feedback through:
+<div align="center">
 
-🟢 **Green LED** → Monitoring / active state
+<img src="./assets/diagrams/hardware-block-diagram.png" width="900">
 
-🔴 **Red LED** → Emergency / alert state
-
-🔊 **Buzzer** → Countdown / emergency indication
-
-📺 **OLED** → Detailed system information
+</div>
 
 ---
 
-# 🔧 Hardware Architecture
+# 💰 Hardware & Cost
 
-```text
-                    🛡️ SHESHIELD
-                         │
-                     ESP32 🧠
-                         │
-        ┌────────────────┼────────────────┐
-        │                │                │
-        ▼                ▼                ▼
-   ❤️ MAX30102       🎙️ SOUND        📳 MPU6050
-   Heart Rate        Sensor          Motion/Impact
-        │                │                │
-        └────────────────┼────────────────┘
-                         │
-                         ▼
-                  🧠 SCORE ENGINE
-                         │
-                         ▼
-                    ⏳ COUNTDOWN
-                         │
-                         ▼
-                      🚨 SOS
-                    /         \
-                   /           \
-              📲 Telegram     📍 GPS
-                              NEO-6M
-```
-
----
-
-# 💰 Hardware & Prototype Cost
-
-| Component                    | Role               |     Approx. Cost |
-| ---------------------------- | ------------------ | ---------------: |
-| 🧠 ESP32 DevKit              | Main controller    |         ₹300–450 |
-| ❤️ MAX30102                  | Heart-rate sensing |         ₹120–200 |
-| 📳 MPU6050                   | Motion / impact    |          ₹80–130 |
-| 📍 NEO-6M GPS                | Location           |         ₹250–400 |
-| 🎙️ Sound Sensor             | Sound events       |          ₹50–100 |
-| 📺 1.3" SH1106 OLED          | Live display       |         ₹150–200 |
-| 🔊 Buzzer + LEDs             | Local alert        |              ₹50 |
-| 🔘 Push Button               | Manual control     |           ₹10–25 |
-| 🔌 Breadboard + wires + case | Prototype build    |         ₹150–350 |
-| **💰 Total Prototype**       |                    | **≈ ₹900–1,400** |
-
-> Cost represents the current prototype configuration and may vary by supplier.
+| Component                    | Role            |     Approx. Cost |
+| ---------------------------- | --------------- | ---------------: |
+| 🧠 ESP32 DevKit              | Main controller |         ₹300–450 |
+| ❤️ MAX30102                  | Heart rate      |         ₹120–200 |
+| 📳 MPU6050                   | Motion / impact |          ₹80–130 |
+| 📍 NEO-6M                    | GPS             |         ₹250–400 |
+| 🎙️ Sound Sensor             | Sound events    |          ₹50–100 |
+| 📺 SH1106 1.3"               | OLED            |         ₹150–200 |
+| 🔊 Buzzer + LEDs             | Alerts          |              ₹50 |
+| 🔘 Push Button               | Control         |           ₹10–25 |
+| 🔌 Breadboard + wires + case | Prototype       |         ₹150–350 |
+| **💰 TOTAL**                 |                 | **≈ ₹900–1,400** |
 
 ---
 
 # 🔌 Pin Map
 
-| Component        | ESP32 Connection |
-| ---------------- | ---------------- |
-| ❤️ MAX30102      | SDA 21 / SCL 22  |
-| 📳 MPU6050       | SDA 21 / SCL 22  |
-| 📺 SH1106 OLED   | SDA 21 / SCL 22  |
-| 📍 GPS TX →      | GPIO 4 / RX2     |
-| 📍 GPS RX ←      | GPIO 5 / TX2     |
-| 🎙️ Sound Sensor | GPIO 34          |
-| 🔊 Buzzer        | GPIO 26          |
-| 🔴 Red LED       | GPIO 27          |
-| 🟢 Green LED     | GPIO 25          |
-| 🔘 Button        | GPIO 13          |
+| Hardware     | ESP32           |
+| ------------ | --------------- |
+| ❤️ MAX30102  | SDA 21 / SCL 22 |
+| 📳 MPU6050   | SDA 21 / SCL 22 |
+| 📺 OLED      | SDA 21 / SCL 22 |
+| 📍 GPS TX    | GPIO 4          |
+| 📍 GPS RX    | GPIO 5          |
+| 🎙️ Sound    | GPIO 34         |
+| 🔊 Buzzer    | GPIO 26         |
+| 🔴 Red LED   | GPIO 27         |
+| 🟢 Green LED | GPIO 25         |
+| 🔘 Button    | GPIO 13         |
 
 ---
 
-# 💻 Technology Stack
+# 🧰 Technology Stack
+
+<div align="center">
+
+<img src="https://img.shields.io/badge/ESP32-000000?style=flat-square&logo=espressif">
+<img src="https://img.shields.io/badge/Arduino-00979D?style=flat-square&logo=arduino">
+<img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus">
+<img src="https://img.shields.io/badge/WiFi-0078D4?style=flat-square&logo=wifi">
+<img src="https://img.shields.io/badge/GPS-NEO--6M-green?style=flat-square">
+<img src="https://img.shields.io/badge/Telegram-Bot_API-26A5E4?style=flat-square&logo=telegram">
+
+</div>
+
+---
+
+# 🎥 LIVE PROTOTYPE
+
+<div align="center">
+
+## 🚀 See SheShield in Action
+
+<!-- OPTION 1: GIF -->
+
+<img src="./assets/demo/sheshield-demo.gif" width="850">
+
+<br><br>
+
+### ▶️ Full Demonstration
+
+<a href="YOUR_YOUTUBE_LINK">
+<img src="https://img.shields.io/badge/▶️_WATCH_FULL_DEMO-FF0000?style=for-the-badge&logo=youtube&logoColor=white">
+</a>
+
+</div>
+
+### 🎬 Recommended Demo Flow
 
 ```text
-🧠 ESP32
-⚙️ Arduino Framework
-❤️ MAX30105 / MAX30102 Library
-📳 MPU6050 — Raw I²C
-📍 TinyGPS++
-📺 U8g2
-📲 UniversalTelegramBot
-📡 Wi-Fi
-💬 Telegram Bot API
+01  🔴 System OFF
+02  🟢 System ON
+03  📺 Live OLED
+04  ❤️ Heart Rate
+05  🎙️ Soft Voice
+06  🎯 Distress Score
+07  ⏳ Countdown
+08  🛑 Cancellation
+09  🚨 SOS
+10  📲 Telegram
+11  📍 GPS
+12  🆘 Manual SOS
 ```
 
 ---
 
-# 🧪 Prototype Demonstration
+# 🧪 Judge Demonstration Matrix
 
-## 🎬 Recommended Judge Demo
-
-### 01 — System OFF
-
-🔴 System inactive
-
-↓
-
-### 02 — Arm System
-
-🟢 Monitoring active
-
-↓
-
-### 03 — Show Live Dashboard
-
-❤️ BPM
-🎙️ Sound
-📳 Motion
-📍 GPS
-🎯 Score
-
-↓
-
-### 04 — Demonstrate Soft Voice
-
-🎙️ Event 1
-🎙️ Event 2
-🎙️ Event 3
-
-↓
-
-### 05 — Show Distress Score
-
-🎯 Score crosses trigger threshold
-
-↓
-
-### 06 — Show Countdown
-
-⏳ 8-second cancellation window
-
-↓
-
-### 07 — Demonstrate Cancellation
-
-🔘 Short press
-
-↓
-
-### 08 — Trigger Again
-
-🚨 Countdown
-
-↓
-
-### 09 — Allow SOS
-
-🚨 SOS ACTIVE
-
-↓
-
-### 10 — Show Telegram
-
-📲 Emergency message
-
-↓
-
-### 11 — Show GPS
-
-📍 Coordinates + Map
-
-↓
-
-### 12 — Demonstrate Manual SOS
-
-🔘 8-second hold
+| Scenario             | Expected Result            |
+| -------------------- | -------------------------- |
+| 🟢 Normal monitoring | Continue monitoring        |
+| 🎙️ Sound event      | Score contribution         |
+| 🎙️ Repeated events  | Increased score            |
+| ❤️ HR rise           | Physiological contribution |
+| 📳 Motion            | Motion contribution        |
+| 💥 Impact            | Impact contribution        |
+| 🎯 Score ≥ threshold | Countdown                  |
+| 🔘 Cancel            | Alert cancelled            |
+| ⏳ No cancellation    | 🚨 SOS                     |
+| 📍 GPS available     | Location sent              |
+| 🆘 Manual SOS        | Emergency sequence         |
 
 ---
 
-# 📊 Judge-Facing Demo Matrix
-
-| Scenario                   | Expected System Response       |
-| -------------------------- | ------------------------------ |
-| 🟢 Normal monitoring       | Continue monitoring            |
-| 🎙️ Single sound event     | Add score / continue           |
-| 🎙️ Multiple sound events  | Increase distress score        |
-| ❤️ HR rise                 | Add physiological contribution |
-| 📳 Motion                  | Add movement contribution      |
-| 💥 Impact                  | Add impact contribution        |
-| 🎯 Threshold reached       | Start countdown                |
-| 🔘 Button during countdown | Cancel                         |
-| ⏳ Countdown expires        | 🚨 SOS                         |
-| 📍 GPS available           | Send location                  |
-| 🔘 Manual SOS              | Emergency sequence             |
-
----
-
-# 📁 Repository Structure
+# 📁 Repository
 
 ```text
 SheShield/
 │
+├── 📂 assets/
+│   ├── 📂 images/
+│   │   ├── prototype-front.jpg
+│   │   ├── prototype-side.jpg
+│   │   ├── prototype-wiring.jpg
+│   │   └── oled-dashboard.jpg
+│   │
+│   ├── 📂 diagrams/
+│   │   ├── system-architecture.png
+│   │   └── hardware-block-diagram.png
+│   │
+│   └── 📂 demo/
+│       └── sheshield-demo.gif
+│
 ├── 📂 firmware/
-│   └── 🧠 SheShield.ino
+│   └── SheShield.ino
 │
 ├── 📂 hardware/
-│   ├── 🔌 wiring/
-│   ├── ⚡ circuit/
-│   └── 📸 prototype-images/
+│   ├── wiring/
+│   └── circuit/
 │
 ├── 📂 docs/
-│   ├── 🧠 architecture/
-│   ├── 🧪 testing/
-│   └── 📊 presentation/
+│   ├── architecture/
+│   ├── testing/
+│   └── presentation/
 │
 ├── 📂 demo/
-│   └── 🎥 demo-video-link.md
+│   └── demo-video-link.md
 │
 └── 📄 README.md
 ```
@@ -696,108 +645,101 @@ SheShield/
 
 # 📈 Prototype Status
 
-## ✅ Working Prototype
+<div align="center">
+
+| Module              |   Status   |
+| ------------------- | :--------: |
+| ❤️ Heart Rate       | 🟢 WORKING |
+| 👤 HR Baseline      | 🟢 WORKING |
+| 🎙️ Sound Detection | 🟢 WORKING |
+| 📳 Motion           | 🟢 WORKING |
+| 💥 Impact           | 🟢 WORKING |
+| 🧠 Distress Score   | 🟢 WORKING |
+| ⏳ 8s Countdown      | 🟢 WORKING |
+| 🛑 Cancellation     | 🟢 WORKING |
+| 🆘 Manual SOS       | 🟢 WORKING |
+| 📍 GPS              | 🟢 WORKING |
+| 📺 OLED             | 🟢 WORKING |
+| 📲 Telegram         | 🟢 WORKING |
+
+</div>
+
+---
+
+# 🚀 Roadmap
 
 ```text
-❤️ Heart-rate sensing              ✅
-👤 Personal HR baseline             ✅
-🎙️ Sound-event detection            ✅
-📳 Motion detection                 ✅
-💥 Impact detection                 ✅
-🧠 Explainable distress score       ✅
-⏳ 8-second cancellation            ✅
-🔘 Manual SOS                       ✅
-📍 GPS acquisition                  ✅
-📺 OLED dashboard                   ✅
-📲 Telegram alerts                  ✅
-🤖 Telegram commands                ✅
-🟢🔴 LED indication                 ✅
-🔊 Buzzer feedback                  ✅
+                 🧪 TODAY
+                    │
+                    ▼
+          🛡️ WORKING PROTOTYPE
+                    │
+                    ▼
+             🔵 PHASE 2
+          Custom PCB + Case
+                    │
+                    ▼
+             🟣 PHASE 3
+           GSM / LTE + SMS
+                    │
+                    ▼
+             🟠 PHASE 4
+        Adaptive Personalization
+                    │
+                    ▼
+             🔴 PHASE 5
+        Controlled Validation
+                    │
+                    ▼
+             🌍 REAL PRODUCT
 ```
 
 ---
 
-# 🚀 Product Roadmap
+# 🔮 Future Product Vision
 
-| Phase                                  | Focus               | Goal                             |
-| -------------------------------------- | ------------------- | -------------------------------- |
-| 🟢 **1 — Prototype**                   | Current system      | Validate multimodal concept      |
-| 🔵 **2 — Wearable Engineering**        | PCB + enclosure     | Compact wearable form            |
-| 🟣 **3 — Independent Communication**   | GSM/LTE + SMS       | Reduce Wi-Fi dependency          |
-| 🟠 **4 — Intelligent Personalization** | Adaptive thresholds | Improve contextual detection     |
-| 🔴 **5 — Validation**                  | Controlled testing  | Evaluate reliability & usability |
+### Current Prototype
 
----
+🧪 Breadboard
+🧠 ESP32
+📡 Wi-Fi
+📲 Telegram
+🔌 External wiring
 
-# 🔮 From Prototype → Product
+### Future Wearable
 
-### Current
-
-```text
-🧪 Breadboard Prototype
-        ↓
-ESP32 + Sensors
-        ↓
-Wi-Fi + Telegram
-```
-
-### Future
-
-```text
-⌚ Compact Wearable
-        ↓
-Custom PCB
-        ↓
-Low-Power Embedded System
-        ↓
-GSM / LTE
-        ↓
-Independent SOS Communication
-```
+⌚ Compact form factor
+⚡ Custom PCB
+🔋 Low-power design
+📡 GSM/LTE
+🧠 Adaptive sensing
+🛡️ Wearable enclosure
 
 ---
 
-# ⚠️ Honest Technical Limitations
+# ⚠️ Honest Limitations
 
-Strong engineering means being transparent about what the prototype **does and does not** do.
+We believe strong engineering means clearly separating **what works today** from **what comes next**.
 
-### 🎙️ Sound
+* 🎙️ Sound detection is based on intensity/events, not speech recognition.
+* 📡 Telegram currently requires Wi-Fi/internet.
+* 📍 GPS requires satellite visibility.
+* ❤️ HR accuracy depends on proper sensor contact.
+* 🧠 Thresholds are prototype parameters.
+* 🧪 Large-scale real-world validation is still required.
+* 🏥 This is not a certified medical or emergency-response device.
 
-The sound sensor detects **sound intensity/events**, not speech semantics.
+### **Prototype ≠ Product**
 
-It does not recognize specific words.
-
-### 📡 Communication
-
-Current Telegram escalation requires Wi-Fi/internet connectivity.
-
-GSM/LTE is part of the future roadmap.
-
-### 📍 GPS
-
-GPS requires satellite visibility and may take time to obtain a fix, especially indoors.
-
-### ❤️ Heart Rate
-
-Reliable HR measurement depends on proper sensor contact and signal quality.
-
-### 🧠 Thresholds
-
-Current thresholds are **prototype parameters** and require broader controlled testing and calibration.
-
-### 🏥 Safety Classification
-
-SheShield is a **student research/hackathon prototype**.
-
-It is not a certified medical device or guaranteed emergency-response system.
+The current goal is to validate the **multimodal safety concept and emergency-response pipeline**.
 
 ---
 
-# 🔐 Security Note
+# 🔐 Security
 
-### 🚨 Never commit credentials to GitHub.
+### 🚨 NEVER upload real credentials to GitHub.
 
-Use placeholders such as:
+Use:
 
 ```cpp
 #define BOT_TOKEN "YOUR_BOT_TOKEN"
@@ -807,99 +749,86 @@ const char* WIFI_SSID = "YOUR_WIFI";
 const char* WIFI_PASSWORD = "YOUR_PASSWORD";
 ```
 
-Use environment/secrets management or a local configuration file for real credentials.
+Keep real credentials outside the public repository.
 
 ---
 
 # 👥 Team SheShield
 
-## 🛡️ Built by
+<div align="center">
 
-| Member               | Role                               | Institution                |
+## 🛡️ Team
+
+| 👤 Member            | 🧩 Role                            | 🎓 Institution             |
 | -------------------- | ---------------------------------- | -------------------------- |
 | **Harsh Parmar**     | 🧠 Team Lead · Hardware & Firmware | Marwadi University, Rajkot |
 | **Mirali Sankaliya** | 📲 SOS Integration · Documentation | Atmiya University          |
 
----
-
-# 🎥 Prototype Demo
-
-### **Coming here: Full working prototype demonstration**
-
-```text
-🎬 DEMO
-
-System ON
-    ↓
-❤️ HR
-    ↓
-🎙️ Soft Voice
-    ↓
-📳 Motion
-    ↓
-🎯 Distress Score
-    ↓
-⏳ 8s Countdown
-    ↓
-🚨 SOS
-    ↓
-📲 Telegram
-    ↓
-📍 GPS
-```
-
-> **[ INSERT FINAL DEMO VIDEO LINK ]**
+</div>
 
 ---
 
 # 🏆 Why SheShield?
 
-The project is built around a simple but important engineering question:
+<div align="center">
 
-> ## **What happens when the person who needs help cannot press the button?**
+### **The problem is not always that the user doesn't want to ask for help.**
 
-SheShield explores a wearable safety architecture where:
+### **Sometimes the problem is that they cannot.**
 
-```text
-❤️ SENSE
-   ↓
-🧠 INTERPRET
-   ↓
-🎯 SCORE
-   ↓
-⚠️ WARN
-   ↓
-⏳ ALLOW CANCELLATION
-   ↓
-🚨 ESCALATE
-   ↓
-📲 COMMUNICATE
-   ↓
-📍 LOCATE
-```
+<br>
 
-The goal is not simply to add more sensors.
+❤️ Sense
 
-### The goal is to create a **coordinated emergency-response pipeline**.
+↓
+
+🧠 Interpret
+
+↓
+
+🎯 Score
+
+↓
+
+⚠️ Warn
+
+↓
+
+⏳ Allow Cancellation
+
+↓
+
+🚨 Escalate
+
+↓
+
+📲 Communicate
+
+↓
+
+📍 Locate
+
+</div>
 
 ---
 
 # 🌟 Vision
 
-### **From button-dependent safety → toward context-aware wearable protection.**
+<div align="center">
 
-A future SheShield aims to be:
+## **From button-dependent safety**
+
+## **to context-aware wearable protection.**
+
+<br>
 
 ⌚ **Compact**
-🔋 **Low-power**
-🧠 **Adaptive**
-📡 **Independent**
-🎯 **Context-aware**
-🛡️ **User-centric**
+🧠 **Intelligent**
+📡 **Connected**
+🎯 **Context-Aware**
+🛡️ **User-Centric**
 
----
-
-<p align="center">
+<br>
 
 # 🛡️ SheShield
 
@@ -907,14 +836,24 @@ A future SheShield aims to be:
 
 ❤️ 🎙️ 📳 💥 📍 📺 📲 🚨
 
-### **Built with purpose. Engineered for impact.**
+<br>
 
 **IEEE WIE ILS 2026 — Track 3: SheLeads**
 
-</p>
+</div>
 
 ---
 
-## 📜 License
+<div align="center">
 
-Released under the **MIT License** for educational, research, and hackathon purposes.
+### ⭐ If you find this project interesting, consider giving it a star!
+
+<img src="https://img.shields.io/github/stars/YOUR_USERNAME/YOUR_REPOSITORY?style=for-the-badge&logo=github">
+
+</div>
+
+---
+
+# 📜 License
+
+Released under the **MIT License** for educational, research and hackathon purposes.
