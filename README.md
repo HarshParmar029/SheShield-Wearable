@@ -263,7 +263,7 @@ const char* WIFI_PASSWORD = "YOUR_PASSWORD";
 
 Recommended demo sequence: System OFF → ON → live monitoring → soft-voice detection → distress score → 8-second countdown → cancel → trigger again → SOS → Telegram alert → GPS location → manual SOS hold.
 
-[▶ Watch Full Demo](YOUR_VIDEO_LINK_HERE)
+[▶https://drive.google.com/file/d/1BlsPJShyzV3eILE0zheHAcHvunwJRicK/view?usp=sharing)
 
 ---
 
